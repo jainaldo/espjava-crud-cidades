@@ -14,14 +14,14 @@
             <h1>GERENCIAMENTO DE CIDADES</h1>
             <p>UM CRUD PARA CRIAR, ALTERAR, EXCLUIR E LISTAR CIDADES</p>
         </div>
-        <form>
+        <form action="/criar" method="POST">
             <div class="form-group">
                 <label for="nome">Cidade:</label>
-                <input type="text" class="form-control" id="nome" placeholder="Informe o nome da cidade">
+                <input name="nome"type="text" class="form-control" id="nome" placeholder="Informe o nome da cidade">
             </div>
             <div class="form-group">
                 <label for="estado">Estado:</label>
-                <input type="text" class="form-control" id="estado" placeholder="Informe o estado ao qual a cidade pertence">
+                <input name="estado" type="text" class="form-control" id="estado" placeholder="Informe o estado ao qual a cidade pertence">
             </div>
             <button type="submit" class="btn btn-primary">Criar</button>
         </form>

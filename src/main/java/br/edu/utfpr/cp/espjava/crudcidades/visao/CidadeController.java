@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -24,10 +25,21 @@ public class CidadeController {
         return "/crud";
     }
     @PostMapping("/criar")
-
     public String criar(Cidade cidade) {
 
         cidades.add(cidade);
+
+        return "redirect:/";
+    }
+
+    @GetMapping("/excluir")
+    public String excluir(
+            @RequestParam String nome,
+            @RequestParam String estado) {
+
+        cidades.removeIf(c ->
+                c.getNome().equals(nome) &&
+                c.getEstado().equals(estado));
 
         return "redirect:/";
     }

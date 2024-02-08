@@ -15,19 +15,37 @@
             <p>UM CRUD PARA CRIAR, ALTERAR, EXCLUIR E LISTAR CIDADES</p>
         </div>
         <#if cidadeAtual??>
-            <form action="/alterar" method="POST">
+            <form action="/alterar" method="POST" class="needs-validation" novalidate>
             <input type="hidden" name="nomeAtual" value="${(cidadeAtual.nome)!}" />
             <input type="hidden" name="estadoAtual" value="${(cidadeAtual.estado)!}" />
         <#else>
-            <form action="/criar" method="POST">
+            <form action="/criar" method="POST" class="needs-validation" novalidate>
         </#if>
             <div class="form-group">
                 <label for="nome">Cidade:</label>
-                <input value="${(cidadeAtual.nome)!}" name="nome" type="text" class="form-control" id="nome" placeholder="Informe o nome da cidade">
+                <input
+                    value="${(cidadeAtual.nome)!}${nomeInformado!}"
+                    name="nome"
+                    type="text"
+                    class="form-control ${(nome??)?then('is-invalid', '')}"
+                    id="nome"
+                    placeholder="Informe o nome da cidade">
+                <div class="invalid-feedback">
+                    ${nome!}
+                </div>
             </div>
             <div class="form-group">
                 <label for="estado">Estado:</label>
-                <input value="${(cidadeAtual.estado)!}" name="estado" type="text" class="form-control" id="estado" placeholder="Informe o estado ao qual a cidade pertence">
+                <input
+                    value="${(cidadeAtual.estado)!}${estadoInformado!}"
+                    name="estado"
+                    type="text"
+                    class="form-control ${(estado??)?then('is-invalid', '')}"
+                    id="estado"
+                    placeholder="Informe o estado ao qual a cidade pertence">
+                <div class="invalid-feedback">
+                    ${estado!}
+                </div>
             </div>
             <#if cidadeAtual??>
                 <button type="submit" class="btn btn-warning">Concluir Alteração</button>
